@@ -22,12 +22,12 @@ public class UseBank extends Strategy implements Task {
 	}
 
 	public void run() {
-		leaveAubury();
+		leaveEssenceMine();
 		walkToBank();
 		useBank();
 	}
 
-	private void leaveAubury() {
+	private void leaveEssenceMine() {
 		if(Util.inEssenceMine() && !Players.getLocal().isMoving()) {
 			if(Util.walkToAndClick("Enter", Util.portalId)) {
 				int time = 0;

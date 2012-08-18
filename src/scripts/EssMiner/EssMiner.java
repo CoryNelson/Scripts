@@ -8,6 +8,7 @@ import org.powerbot.game.bot.event.listener.MessageListener;
 import org.powerbot.game.bot.event.listener.PaintListener;
 import scripts.EssMiner.paint.Paint;
 import scripts.EssMiner.tasks.MineEss;
+import scripts.EssMiner.tasks.UseBank;
 
 import java.awt.*;
 
@@ -15,10 +16,12 @@ import java.awt.*;
 public class EssMiner extends ActiveScript implements PaintListener, MessageListener {
 
 	private MineEss mineEss;
+	private UseBank useBank;
 	private Paint paint;
 
 	public void setup() {
 		provide(mineEss = new MineEss());
+		provide(useBank = new UseBank());
 		paint = new Paint();
 	}
 
