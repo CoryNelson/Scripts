@@ -12,6 +12,7 @@ import org.powerbot.game.api.util.Time;
 import org.powerbot.game.api.wrappers.interactive.NPC;
 import org.powerbot.game.api.wrappers.widget.WidgetChild;
 import scripts.SpiceLooter.SpiceLooter;
+import scripts.SpiceLooter.util.Util;
 
 public class ChaseVermin extends Strategy implements Task {
 
@@ -24,10 +25,15 @@ public class ChaseVermin extends Strategy implements Task {
 
 	public boolean validate() {
 		NPC cat = spiceLooter.getCat();
-		if(cat != null) {
-			int interId = cat.getInteracting().getId();
-			int myId = Players.getLocal().getId();
-			return interId == myId && !cat.isMoving();
+		try {
+			if(cat != null && cat.getInteracting() != null) {
+				int interId = cat.getInteracting().getId();
+				int myId = Players.getLocal().getId();
+				return interId == myId && !cat.isMoving() && Util.getSpice() == null;
+			}
+		}
+		catch(Exception e) {
+			return false;
 		}
 		return false;
 	}

@@ -27,7 +27,7 @@ public class SpiceLooter extends ActiveScript implements PaintListener, MessageL
 	private NPC cat;
 
 	public void setup() {
-		submit(new DetectMyCat(this));
+		provide(new DetectMyCat(this));
 		provide(new ChaseVermin(this));
 		provide(new LootSpices(this));
 		paint = new Paint(this);
@@ -39,7 +39,6 @@ public class SpiceLooter extends ActiveScript implements PaintListener, MessageL
 	}
 
 	public void messageReceived(MessageEvent event) {
-		System.out.println(event.getId());
 		if(event.getId() == 2 && isMe(event.getSender())) {
 			if(event.getMessage().contains("Hey well done"))
 				Paint.Caught++;
@@ -47,6 +46,8 @@ public class SpiceLooter extends ActiveScript implements PaintListener, MessageL
 				Paint.Attempts++;
 		}
 		if(event.getId() == 0 && event.getMessage().contains("The rat manages"))
+			Paint.Failed++;
+		if(event.getId() == 0 && event.getMessage().contains("Your cat cannot"))
 			Paint.Failed++;
 	}
 
