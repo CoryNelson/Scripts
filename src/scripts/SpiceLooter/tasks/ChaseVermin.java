@@ -31,10 +31,7 @@ public class ChaseVermin extends Strategy implements Task {
 				int myId = Players.getLocal().getId();
 				return interId == myId && !cat.isMoving() && Util.getSpice() == null;
 			}
-		}
-		catch(Exception e) {
-			return false;
-		}
+		} catch(Exception e) {}
 		return false;
 	}
 
