@@ -41,12 +41,10 @@ public class LootSpices extends Strategy implements Task {
 
 	public GroundItem getSpice() {
 		return GroundItems.getNearest(new Filter<GroundItem>() {
-			@Override
 			public boolean accept(GroundItem item) {
-				if(item == null || item.getGroundItem() == null)
+				if(item == null)
 					return false;
-				String name = item.getGroundItem().getName();
-				return name.contains("spice");
+				return item.getId() >= 7480 && item.getId() <= 7495;
 			}
 		});
 	}
