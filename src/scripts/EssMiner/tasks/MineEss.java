@@ -34,6 +34,10 @@ public class MineEss extends Strategy implements Task {
 		}
 		if(Util.outsideAuburyShop() && !Players.getLocal().isMoving()) {
 			SceneObject door = SceneEntities.getAt(Util.auburyDoor);
+			if(door != null && !door.isOnScreen())
+				Walking.walk(door);
+			if(door == null)
+				Walking.walk(Util.aubury);
 			if(door != null && door.getId() == Util.closedDoor) {
 				if(door.interact("Open")) {
 					int time = 0;

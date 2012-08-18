@@ -19,7 +19,7 @@ public class Util {
 	
 	public static Tile bank = new Tile(3253, 3419, 0);
 	public static Tile aubury = new Tile(3253, 3401, 0);
-	public static Tile auburyDoor = new Tile(3253, 3399, 0);
+	public static Tile auburyDoor = new Tile(3253, 3398, 0);
 
 	public static int portalId = 39831;
 	public static int essenceId = 2491;
@@ -35,7 +35,7 @@ public class Util {
 	public static boolean outsideAuburyShop() {
 		int x = Players.getLocal().getLocation().getX();
 		int y = Players.getLocal().getLocation().getY();
-		return x >= 3251 && y >= 3396 && x <= 3255 && y <= 3398;
+		return x >= 3246 && y >= 3396 && x <= 3259 && y <= 3410 && !inAuburyShop();
 	}
 
 	public static boolean inAuburyShop() {

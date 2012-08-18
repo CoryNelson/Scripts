@@ -42,6 +42,7 @@ public class UseBank extends Strategy implements Task {
 	private void walkToBank() {
 		if(Util.inAuburyShop() && !Players.getLocal().isMoving()) {
 			SceneObject door = SceneEntities.getAt(Util.auburyDoor);
+			System.out.println(door);
 			if(door != null && door.getId() == Util.closedDoor) {
 				if(door.interact("Open")) {
 					int time = 0;
