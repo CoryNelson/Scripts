@@ -2,6 +2,7 @@ package scripts.SpiceLooter;
 
 import org.powerbot.game.api.ActiveScript;
 import org.powerbot.game.api.Manifest;
+import org.powerbot.game.api.methods.interactive.Players;
 import org.powerbot.game.api.wrappers.interactive.NPC;
 import org.powerbot.game.bot.event.MessageEvent;
 import org.powerbot.game.bot.event.listener.MessageListener;
@@ -38,9 +39,19 @@ public class SpiceLooter extends ActiveScript implements PaintListener, MessageL
 	}
 
 	public void messageReceived(MessageEvent event) {
-		System.out.println(""+event.getMessage());
-		System.out.println(""+event.getSender());
-		System.out.println(""+event.getId());
+		System.out.println(event.getId());
+		if(event.getId() == 2 && isMe(event.getSender())) {
+			if(event.getMessage().contains("Hey well done"))
+				Paint.Caught++;
+			if(event.getMessage().contains("Go on"))
+				Paint.Attempts++;
+		}
+		if(event.getId() == 0 && event.getMessage().contains("The rat manages"))
+			Paint.Failed++;
+	}
+
+	private boolean isMe(String name) {
+		return name.equals(Players.getLocal().getName());
 	}
 
 	public NPC getCat() {
