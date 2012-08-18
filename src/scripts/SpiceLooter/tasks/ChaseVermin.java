@@ -26,25 +26,26 @@ public class ChaseVermin extends Strategy implements Task {
 	public boolean validate() {
 		NPC cat = spiceLooter.getCat();
 		try {
-			if(cat != null && cat.getInteracting() != null) {
+			if (cat != null && cat.getInteracting() != null) {
 				int interId = cat.getInteracting().getId();
 				int myId = Players.getLocal().getId();
 				return interId == myId && !cat.isMoving() && Util.getSpice() == null;
 			}
-		} catch(Exception e) {}
+		} catch (Exception e) {
+		}
 		return false;
 	}
 
 	public void run() {
 		NPC cat = spiceLooter.getCat();
-		if(cat.interact("Interact-with", cat.getName())) {
+		if (cat.interact("Interact-with", cat.getName())) {
 			int time = 0;
 			while (!chaseVermin.validate() && time <= 3000) {
 				time += 50;
 				Time.sleep(50);
 			}
 		}
-		if(chaseVermin.validate() && chaseVermin.click(true)) {
+		if (chaseVermin.validate() && chaseVermin.click(true)) {
 			int time = 0;
 			while (!cat.isMoving() && time <= 3000) {
 				time += 50;

@@ -8,10 +8,10 @@ import scripts.SpiceLooter.SpiceLooter;
 import java.awt.*;
 
 /**
-* User: Cory
-	* Date: 18/08/12
-	* Time: 02:31
-	*/
+ * User: Cory
+ * Date: 18/08/12
+ * Time: 02:31
+ */
 public class Paint {
 
 	private long startTime;
@@ -32,7 +32,7 @@ public class Paint {
 
 		int width = Game.getDimensions().width;
 		int height = Game.getDimensions().height;
-		int x = width-460;
+		int x = width - 460;
 		int y = 65;
 		g.setColor(new Color(0, 0, 0, 140));
 		g.fillRect(x, y, 200, 110);
@@ -42,15 +42,15 @@ public class Paint {
 		g.setFont(new Font("Courier New", 1, 15));
 		g.drawString("Spice Looter!", x + 10, y + 20);
 		g.setFont(new Font("Courier New", 2, 12));
-		g.drawString("Time Run: " + Time.format(System.currentTimeMillis() - startTime), x+10, y+40);
+		g.drawString("Time Run: " + Time.format(System.currentTimeMillis() - startTime), x + 10, y + 40);
 		g.drawString("Attempts: " + Attempts, x + 10, y + 55);
 		g.drawString("Failed: " + Failed, x + 10, y + 70);
 		int caughtHr = (int) ((Caught) * 3600000D / (System.currentTimeMillis() - startTime));
-		g.drawString("Caught: "+(int)Caught+", P/Hr: "+caughtHr, x+10, y+85);
-		g.drawString("Success Rate: "+(int)(Attempts > 0 ? (Caught/Attempts)*100 : 0)+"%", x+10, y+100);
+		g.drawString("Caught: " + (int) Caught + ", P/Hr: " + caughtHr, x + 10, y + 85);
+		g.drawString("Success Rate: " + (int) (Attempts > 0 ? (Caught / Attempts) * 100 : 0) + "%", x + 10, y + 100);
 
 		g.setColor(new Color(0, 255, 0, 20));
-		if(spiceLooter.getCat() != null) {
+		if (spiceLooter.getCat() != null) {
 			for (Polygon p : spiceLooter.getCat().getBounds()) {
 				g.drawPolygon(p);
 			}

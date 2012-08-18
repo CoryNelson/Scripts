@@ -28,14 +28,14 @@ public class DetectMyCat extends Strategy implements Task {
 		NPC cat = NPCs.getNearest(new Filter<NPC>() {
 			@Override
 			public boolean accept(NPC npc) {
-				if(npc.getInteracting() == null)
+				if (npc.getInteracting() == null)
 					return false;
 				int interId = npc.getInteracting().getId();
 				int myId = Players.getLocal().getId();
 				return interId == myId;
 			}
 		});
-		if(cat != null)
+		if (cat != null)
 			spiceLooter.setCat(cat);
 	}
 }

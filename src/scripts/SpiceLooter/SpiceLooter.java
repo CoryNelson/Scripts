@@ -34,20 +34,20 @@ public class SpiceLooter extends ActiveScript implements PaintListener, MessageL
 	}
 
 	public void onRepaint(Graphics g) {
-		if(paint != null)
+		if (paint != null)
 			paint.draw(g);
 	}
 
 	public void messageReceived(MessageEvent event) {
-		if(event.getId() == 2 && isMe(event.getSender())) {
-			if(event.getMessage().contains("Hey well done"))
+		if (event.getId() == 2 && isMe(event.getSender())) {
+			if (event.getMessage().contains("Hey well done"))
 				Paint.Caught++;
-			if(event.getMessage().contains("Go on"))
+			if (event.getMessage().contains("Go on"))
 				Paint.Attempts++;
 		}
-		if(event.getId() == 0 && event.getMessage().contains("The rat manages"))
+		if (event.getId() == 0 && event.getMessage().contains("The rat manages"))
 			Paint.Failed++;
-		if(event.getId() == 0 && event.getMessage().contains("Your cat cannot"))
+		if (event.getId() == 0 && event.getMessage().contains("Your cat cannot"))
 			Paint.Failed++;
 	}
 

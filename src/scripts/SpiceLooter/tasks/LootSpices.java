@@ -30,7 +30,7 @@ public class LootSpices extends Strategy implements Task {
 	public void run() {
 		GroundItem spice = Util.getSpice();
 		int count = Inventory.getCount(spice.getId());
-		if(lootSpice()) {
+		if (lootSpice()) {
 			int time = 0;
 			while (Inventory.getCount(spice.getId()) <= count && time <= 5000) {
 				time += 50;
