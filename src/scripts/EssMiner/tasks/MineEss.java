@@ -29,19 +29,19 @@ public class MineEss extends Strategy implements Task {
 	}
 
 	private void walkToAubury() {
-		if(Util.inBank() && !Players.getLocal().isMoving()) {
+		if (Util.inBank() && !Players.getLocal().isMoving()) {
 			Walking.walk(Util.aubury);
 		}
-		if(Util.outsideAuburyShop() && !Players.getLocal().isMoving()) {
+		if (Util.outsideAuburyShop() && !Players.getLocal().isMoving()) {
 			SceneObject door = SceneEntities.getAt(Util.auburyDoor);
-			if(door != null && !door.isOnScreen())
+			if (door != null && !door.isOnScreen())
 				Walking.walk(door);
-			if(door == null)
+			if (door == null)
 				Walking.walk(Util.aubury);
-			if(door != null && door.getId() == Util.closedDoor) {
-				if(door.interact("Open")) {
+			if (door != null && door.getId() == Util.closedDoor) {
+				if (door.interact("Open")) {
 					int time = 0;
-					while(SceneEntities.getAt(Util.auburyDoor).getId() == Util.closedDoor && time <= 4000) {
+					while (SceneEntities.getAt(Util.auburyDoor).getId() == Util.closedDoor && time <= 4000) {
 						time += 50;
 						Time.sleep(50);
 					}
@@ -51,11 +51,11 @@ public class MineEss extends Strategy implements Task {
 	}
 
 	private void teleportToMine() {
-		if(Util.inAuburyShop()) {
+		if (Util.inAuburyShop()) {
 			NPC aubury = NPCs.getNearest(Util.auburyId);
-			if(aubury.interact("teleport")) {
+			if (aubury.interact("teleport")) {
 				int time = 0;
-				while(!Util.inEssenceMine() && time <= 4000) {
+				while (!Util.inEssenceMine() && time <= 4000) {
 					time += 50;
 					Time.sleep(50);
 				}
@@ -64,10 +64,10 @@ public class MineEss extends Strategy implements Task {
 	}
 
 	private void walkToEss() {
-		if(Util.inEssenceMine() && !Players.getLocal().isMoving() && Players.getLocal().getAnimation() == -1) {
-			if(Util.walkToAndClick("Mine", Util.essenceId)) {
+		if (Util.inEssenceMine() && !Players.getLocal().isMoving() && Players.getLocal().getAnimation() == -1) {
+			if (Util.walkToAndClick("Mine", Util.essenceId)) {
 				int time = 0;
-				while(Players.getLocal().getAnimation() == -1 && time <= 4000) {
+				while (Players.getLocal().getAnimation() == -1 && time <= 4000) {
 					time += 50;
 					Time.sleep(50);
 				}

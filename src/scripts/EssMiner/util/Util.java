@@ -16,7 +16,7 @@ import org.powerbot.game.api.wrappers.node.SceneObject;
  * Time: 08:20
  */
 public class Util {
-	
+
 	public static Tile bank = new Tile(3253, 3419, 0);
 	public static Tile aubury = new Tile(3253, 3401, 0);
 	public static Tile auburyDoor = new Tile(3253, 3398, 0);

@@ -28,10 +28,10 @@ public class UseBank extends Strategy implements Task {
 	}
 
 	private void leaveEssenceMine() {
-		if(Util.inEssenceMine() && !Players.getLocal().isMoving()) {
-			if(Util.walkToAndClick("Enter", Util.portalId)) {
+		if (Util.inEssenceMine() && !Players.getLocal().isMoving()) {
+			if (Util.walkToAndClick("Enter", Util.portalId)) {
 				int time = 0;
-				while(Util.inEssenceMine() && time <= 4000) {
+				while (Util.inEssenceMine() && time <= 4000) {
 					time += 50;
 					Time.sleep(50);
 				}
@@ -40,13 +40,13 @@ public class UseBank extends Strategy implements Task {
 	}
 
 	private void walkToBank() {
-		if(Util.inAuburyShop() && !Players.getLocal().isMoving()) {
+		if (Util.inAuburyShop() && !Players.getLocal().isMoving()) {
 			SceneObject door = SceneEntities.getAt(Util.auburyDoor);
 			System.out.println(door);
-			if(door != null && door.getId() == Util.closedDoor) {
-				if(door.interact("Open")) {
+			if (door != null && door.getId() == Util.closedDoor) {
+				if (door.interact("Open")) {
 					int time = 0;
-					while(SceneEntities.getAt(Util.auburyDoor).getId() == Util.closedDoor && time <= 4000) {
+					while (SceneEntities.getAt(Util.auburyDoor).getId() == Util.closedDoor && time <= 4000) {
 						time += 50;
 						Time.sleep(50);
 					}
@@ -58,11 +58,11 @@ public class UseBank extends Strategy implements Task {
 	}
 
 	private void useBank() {
-		if(Util.inBank() && !Players.getLocal().isMoving()) {
-			if(Bank.open()) {
-				if(Bank.depositInventory()) {
+		if (Util.inBank() && !Players.getLocal().isMoving()) {
+			if (Bank.open()) {
+				if (Bank.depositInventory()) {
 					int time = 0;
-					while(Inventory.isFull() && time <= 4000) {
+					while (Inventory.isFull() && time <= 4000) {
 						time += 50;
 						Time.sleep(50);
 					}
